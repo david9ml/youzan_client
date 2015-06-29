@@ -1,0 +1,3 @@
+<?php
+define ("APPID", 'your appid');
+define ("APPSECRET", 'your appsecret');
