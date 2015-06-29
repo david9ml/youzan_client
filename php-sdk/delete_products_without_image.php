@@ -23,6 +23,7 @@ function delete_product($num_iid){
 	return $client->post($method, $params);
 }
 
+while(1){
 $all_products = get_all_online_products();
 foreach($all_products['response']['items'] as $p){
     $url=$p['item_imgs'][0]['url'];
@@ -37,4 +38,7 @@ foreach($all_products['response']['items'] as $p){
         print("deleted a product."."\n");
     }
     unlink($save_path);
+}
+print("I'm sleeping 60*40s..."."\n");
+sleep(60*40);
 }

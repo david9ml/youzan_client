@@ -122,4 +122,8 @@ function update_products(){
     }
 }
 
+while(1){
 update_products();
+print("I'm sleeping 60*60s..."."\n");
+sleep(60*60);
+}
