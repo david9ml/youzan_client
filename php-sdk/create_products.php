@@ -71,7 +71,7 @@ function create_products(){
         $material_str = (string)($ele_obj->material);
         $color_str = (string)($ele_obj->color);
         $cate_str = (string)($ele_obj->cate);
-        $price_eu_str = (string)number_format(((float)($ele_obj->price_eu)*6.8073), 2, '.', '');
+        $price_eu_str = (string)number_format((float)round(($ele_obj->price)*0.7949, 0), 2, '.', '');
         $name_str = (string)($ele_obj->name);
         $quatity_str = (string)($ele_obj->quatity);
         $code_str = (string)($ele_obj->code);

@@ -15,6 +15,7 @@ function get_file_size(){
 function get_exactly_product($sku) {
     $client = new KdtApiClient(APPID, APPSECRET);
     $method = 'kdt.items.custom.get';
+    //$method = 'kdt.skus.custom.get';
     $params = [
         'outer_id' => $sku,
    ];
@@ -151,8 +152,40 @@ function test_create_one_product(){
 }
 
 function test_update_one_product(){
+    $u_param_array = array();
+    $u_param_array['sku_properties'] = '尺寸:38,尺寸:40,尺寸:41';
+    $u_param_array['sku_quantities'] = '1,3,2';
+    $u_param_array['sku_outer_ids'] = '9600000738821,960000073883,960000073884';
+    $u_param_array['sku_prices'] = '8293.01,8293.01,8293.01';
+    $client = new KdtApiClient(APPID, APPSECRET);
+    $method = 'kdt.item.update';
+    $params = [
+        'num_iid' => '58355236' ,
+        'sku_properties' => $u_param_array['sku_properties'],
+        'sku_quantities' => $u_param_array['sku_quantities'],
+        'sku_outer_ids' => $u_param_array['sku_outer_ids'],
+        'sku_prices' => $u_param_array['sku_prices'],
+   ];
+    $result = $client->get($method, $params);
+	var_dump($client->get($method, $params));
 }
 
-//test_create_one_product();
-var_dump(get_exactly_product('9200000255726'));
+function test_update_one_product_2(){
+    $client = new KdtApiClient(APPID, APPSECRET);
+    //$method = 'kdt.item.update';
+    $method = 'kdt.item.sku.update';
+    $params = [
+        'num_iid' => '58355236' ,
+        'sku_id' => '35866822' ,
+        'quantity' => '1',
+   ];
+    $result = $client->get($method, $params);
+	var_dump($client->get($method, $params));
+}
 
+
+//test_create_one_product();
+//var_dump(get_exactly_product('9200000255726'));
+//test_update_one_product();
+test_update_one_product_2();
+//var_dump(get_exactly_product('9200000255726'));
