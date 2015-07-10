@@ -58,7 +58,8 @@ class KdtApiClient {
 
 	private function parseResponse($responseData) {
 		$data = json_decode($responseData, true);
-		if (null === $data) throw new Exception('response invalid, data: ' . $responseData);
+		//if (null === $data) throw new Exception('response invalid, data: ' . $responseData);
+		if (null === $data) var_dump('response invalid, data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' );
 		return $data;
 	}
 
