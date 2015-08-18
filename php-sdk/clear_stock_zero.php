@@ -35,23 +35,25 @@ while(1){
             print("found outer_id sku,try to  clear stock zero product..."."\n");
             $xml = simplexml_load_file(__DIR__ . '/morning.inventory.hk.xml');
             $found = False;
-            foreach($xml->children()->children() as $ele){
-                $ele_obj = (object)$ele;
-                $code_str = (string)($ele_obj->code);
-                if($code_str==$p['outer_id']){
-                    $found = True;
-                    break;
+            if($xml != False){
+                foreach($xml->children()->children() as $ele){
+                    $ele_obj = (object)$ele;
+                    $code_str = (string)($ele_obj->code);
+                    if($code_str==$p['outer_id']){
+                        $found = True;
+                        break;
+                    }
                 }
-            }
-            if($found==False){
-                print("stock zero, delete product."."\n");
-                $result = delete_product($p['num_iid']);
-                var_dump($result);
-                print("deleted a product."."\n");
-            }
-            else{
-                print("stock not zero, skip."."\n");
-            }
+                if($found==False){
+                    print("stock zero, delete product."."\n");
+                    $result = delete_product($p['num_iid']);
+                    var_dump($result);
+                    print("deleted a product."."\n");
+                }
+                else{
+                    print("stock not zero, skip."."\n");
+                }
+          }
         }
     }
 
